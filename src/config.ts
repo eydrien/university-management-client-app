@@ -1,2 +1,1 @@
-// src/config.ts
-export const API_BASE = "http://localhost:3000/api"; // Ajusta según tu back
+export const API_BASE = 'http://localhost:3000/api' // Cámbialo según tu back-end

@@ -1,11 +1,16 @@
-import { Routes, Route } from 'react-router-dom';
-import AsignaturasPage from './pages/AsignaturasPage';
+import { Routes, Route } from 'react-router-dom'
+import HomePage from './pages/HomePage'
+import EstudiantesPage from './pages/EstudiantesPage'
+// Aquí importarás más páginas a medida que las crees
 
-export default function App() {
+function App() {
   return (
     <Routes>
-      <Route path="/asignaturas" element={<AsignaturasPage />} />
-      <Route path="*" element={<div>404 - Página no encontrada</div>} />
+      <Route path="/" element={<HomePage />} />
+      <Route path="/estudiantes" element={<EstudiantesPage />} />
+      {/* Aquí más rutas */}
     </Routes>
-  );
+  )
 }
+
+export default App
