@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage'
-import EstudiantesPage from './pages/EstudiantesPage'
-// Aquí importarás más páginas a medida que las crees
+import EstudiantesPage from './features/estudiantes/EstudiantesPage'
+
 
 function App() {
   return (
