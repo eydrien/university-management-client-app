@@ -1,5 +1,5 @@
 import axios from "axios"
-import { Estudiante } from "@/types/Estudiante"
+import type { Estudiante } from "../types/Estudiante"
 
 const API = "http://localhost:3000/estudiantes"
 
