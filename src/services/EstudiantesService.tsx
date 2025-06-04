@@ -1,9 +1,25 @@
-import axios from "axios"
-import type { Estudiante } from "../types/Estudiante"
+import axios from "axios";
+import { API_BASE } from "../config";
+import type { Estudiante } from "../types/Estudiante";
 
-const API = "http://localhost:3000/estudiantes"
+const BASE_URL = `${API_BASE}estudiantes`;
 
 export const getEstudiantes = async (): Promise<Estudiante[]> => {
-  const res = await axios.get(API)
-  return res.data
-}
+  const res = await axios.get(BASE_URL);
+  return res.data;
+};
+
+export const createEstudiante = async (nuevo: Omit<Estudiante, "cod_e">) => {
+  const res = await axios.post(BASE_URL, nuevo);
+  return res.data;
+};
+
+export const updateEstudiante = async (codigo: number, actualizado: Partial<Estudiante>) => {
+  const res = await axios.put(`${BASE_URL}/${codigo}`, actualizado);
+  return res.data;
+};
+
+export const deleteEstudiante = async (codigo: number) => {
+  const res = await axios.delete(`${BASE_URL}/${codigo}`);
+  return res.data;
+};
