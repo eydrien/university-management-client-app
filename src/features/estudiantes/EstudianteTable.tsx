@@ -19,7 +19,7 @@ const EstudianteTable = ({ estudiantes }: { estudiantes: Estudiante[] }) => {
             <td className="px-4 py-2">{e.nom_e}</td>
             <td className="px-4 py-2">{e.dir_e}</td>
             <td className="px-4 py-2">{e.tel_e}</td>
-            <td className="px-4 py-2">{e.fech_nac}</td>
+            <td className="px-4 py-2">{e.fech_nac?.slice(0,10)}</td>
           </tr>
         ))}
       </tbody>

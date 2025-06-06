@@ -12,10 +12,11 @@ export async function getEstudiantes(): Promise<Estudiante[]> {
   return data.data; 
 }
 
-export const createEstudiante = async (nuevo: Omit<Estudiante, "cod_e">) => {
+export const createEstudiante = async (nuevo: Estudiante) => {
   const res = await axios.post(BASE_URL, nuevo);
   return res.data;
 };
+
 
 export const updateEstudiante = async (codigo: number, actualizado: Partial<Estudiante>) => {
   const res = await axios.put(`${BASE_URL}${codigo}`, actualizado);
