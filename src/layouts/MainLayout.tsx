@@ -3,14 +3,12 @@ import Sidebar from "../components/Sidebar"
 
 const MainLayout = () => {
   return (
-    <div className="flex min-h-screen">
-      {/* Sidebar con ancho fijo */}
-      <aside className="w-64 bg-white border-r border-gray-200">
-        <Sidebar />
-      </aside>
+    <div className="flex h-screen overflow-hidden">
+      {/* Sidebar fijo */}
+      <Sidebar />
 
-      {/* Contenido principal que se ajusta automáticamente */}
-      <main className="flex-1 bg-gray-100 p-6">
+      {/* Contenido principal con scroll independiente */}
+      <main className="flex-1 overflow-y-auto bg-gray-100 p-6">
         <Outlet />
       </main>
     </div>
