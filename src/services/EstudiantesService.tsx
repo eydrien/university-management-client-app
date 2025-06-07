@@ -4,26 +4,45 @@ import type { Estudiante } from "../types/Estudiante";
 
 const BASE_URL = `${API_BASE}estudiantes`;
 
+/**
+ * Obtiene la lista de todos los estudiantes desde la API.
+ */
 export async function getEstudiantes(): Promise<Estudiante[]> {
-  const response = await fetch(BASE_URL);
-  const data = await response.json();
-  console.log('Respuesta completa:', data); // para confirmar la estructura
-
-  return data.data; 
+  try {
+    const response = await axios.get(BASE_URL);
+    console.log("Estudiantes obtenidos:", response.data);
+    return response.data.data; // O response.data según lo que devuelva tu backend
+  } catch (error) {
+    console.error("Error al obtener estudiantes:", error);
+    throw error;
+  }
 }
 
-export const createEstudiante = async (nuevo: Estudiante) => {
+/**
+ * Crea un nuevo estudiante.
+ */
+export const createEstudiante = async (nuevo: Estudiante): Promise<Estudiante> => {
   const res = await axios.post(BASE_URL, nuevo);
   return res.data;
 };
 
-
-export const updateEstudiante = async (codigo: number, actualizado: Partial<Estudiante>) => {
+/**
+ * Actualiza un estudiante existente según su código.
+ */
+export const updateEstudiante = async (
+  codigo: number,
+  actualizado: Partial<Estudiante>
+): Promise<Estudiante> => {
   const res = await axios.put(`${BASE_URL}/${codigo}`, actualizado);
   return res.data;
 };
 
-export const deleteEstudiante = async (codigo: number) => {
+/**
+ * Elimina un estudiante por su código.
+ */
+export const deleteEstudiante = async (
+  codigo: number
+): Promise<{ message: string }> => {
   const res = await axios.delete(`${BASE_URL}/${codigo}`);
   return res.data;
 };

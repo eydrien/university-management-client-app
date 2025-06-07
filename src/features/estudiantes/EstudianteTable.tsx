@@ -6,7 +6,19 @@ interface Props {
   onDelete: (codigo: number) => void;
 }
 
+// Función auxiliar para formatear fechas (dd/mm/aaaa)
+const formatDate = (dateString: string) =>
+  new Date(dateString).toLocaleDateString("es-CO", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
+
 const EstudianteTable = ({ estudiantes, onEdit, onDelete }: Props) => {
+  // Handlers para evitar crear funciones inline dentro del render
+  const handleEdit = (estudiante: Estudiante) => () => onEdit(estudiante);
+  const handleDelete = (codigo: number) => () => onDelete(codigo);
+
   return (
     <table className="w-full table-auto border-collapse">
       <thead>
@@ -26,21 +38,25 @@ const EstudianteTable = ({ estudiantes, onEdit, onDelete }: Props) => {
             <td className="p-2 border">{e.nom_e}</td>
             <td className="p-2 border">{e.dir_e}</td>
             <td className="p-2 border">{e.tel_e}</td>
-            <td className="p-2 border">{new Date(e.fech_nac).toLocaleDateString()}</td>
-            {/* <td className="px-4 py-2">{e.fech_nac?.slice(0,10)}</td> */}
-            <td className="p-2 border flex justify-center gap-2">
-              <button
-                onClick={() => onEdit(e)}
-                className="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded"
-              >
-                Editar
-              </button>
-              <button
-                onClick={() => onDelete(e.cod_e)}
-                className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded"
-              >
-                Eliminar
-              </button>
+            <td className="p-2 border">{formatDate(e.fech_nac)}</td>
+            <td className="p-2 border">
+              {/* Flex para mejor adaptación en pantallas pequeñas */}
+              <div className="flex flex-col sm:flex-row justify-center gap-2">
+                <button
+                  onClick={handleEdit(e)}
+                  title="Editar estudiante"
+                  className="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded"
+                >
+                  Editar
+                </button>
+                <button
+                  onClick={handleDelete(e.cod_e)}
+                  title="Eliminar estudiante"
+                  className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded"
+                >
+                  Eliminar
+                </button>
+              </div>
             </td>
           </tr>
         ))}
