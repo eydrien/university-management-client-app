@@ -3,6 +3,7 @@ import HomePage from "./pages/HomePage"
 import EstudiantesPage from "./features/estudiantes/EstudiantesPage"
 import MainLayout from "./layouts/MainLayout"
 import PlainLayout from "./layouts/PlainLayout"
+import AsignaturasPage from "./features/asignaturas/AsignaturaPage"
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
       {/* Páginas con Sidebar */}
       <Route element={<MainLayout />}>
         <Route path="/estudiantes" element={<EstudiantesPage />} />
-        
+        <Route path="/asignaturas" element={<AsignaturasPage/>} />
+        {/* <Route path="/profesores" element={<PofesoresPage/>} /> */}
       </Route>
     </Routes>
   )
