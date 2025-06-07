@@ -19,11 +19,11 @@ export const createEstudiante = async (nuevo: Estudiante) => {
 
 
 export const updateEstudiante = async (codigo: number, actualizado: Partial<Estudiante>) => {
-  const res = await axios.put(`${BASE_URL}${codigo}`, actualizado);
+  const res = await axios.put(`${BASE_URL}/${codigo}`, actualizado);
   return res.data;
 };
 
 export const deleteEstudiante = async (codigo: number) => {
-  const res = await axios.delete(`${BASE_URL}${codigo}`);
+  const res = await axios.delete(`${BASE_URL}/${codigo}`);
   return res.data;
 };
