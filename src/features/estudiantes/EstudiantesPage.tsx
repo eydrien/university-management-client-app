@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react"
+import { useToast } from "../../context/ToastContext"
 import EstudianteForm from "./EstudianteForm"
 import EstudianteTable from "./EstudianteTable"
 import EstudianteModal from "./EstudiantesModal"
 import { getEstudiantes, deleteEstudiante, updateEstudiante } from "../../services/EstudiantesService"
 import type { Estudiante } from "../../types/Estudiante"
 import { GraduationCap } from "lucide-react"
+
+
+
 
 const EstudiantesPage = () => {
   const [estudiantes, setEstudiantes] = useState<Estudiante[]>([])
@@ -27,37 +31,38 @@ const EstudiantesPage = () => {
     }
   }
 
-  const handleDelete = async (codigo: number) => {
-    const confirmed = confirm("¿Está seguro que desea eliminar este estudiante?")
-    if (!confirmed) return
+const { showToast } = useToast()
 
-    try {
-      await deleteEstudiante(codigo)
-      alert("Estudiante eliminado correctamente")
-      fetchEstudiantes()
-    } catch (error) {
-      console.error("Error al eliminar estudiante:", error)
-      alert("Error al eliminar el estudiante")
-    }
+const handleDelete = async (codigo: number) => {
+  const confirmed = confirm("¿Está seguro que desea eliminar este estudiante?")
+  if (!confirmed) return
+
+  try {
+    await deleteEstudiante(codigo)
+    showToast("Estudiante eliminado correctamente", "success")
+    fetchEstudiantes()
+  } catch (error) {
+    console.error("Error al eliminar estudiante:", error)
+    showToast("Error al eliminar el estudiante", "error")
   }
+}
 
   const handleEdit = (estudiante: Estudiante) => {
     setEstudianteAEditar(estudiante)
     setModalOpen(true)
   }
 
-  const handleSave = async (data: Estudiante) => {
-    try {
-      await updateEstudiante(data.cod_e, data)
-      alert("Estudiante actualizado correctamente")
-      fetchEstudiantes()
-      setModalOpen(false)
-    } catch (error) {
-      console.error("Error al actualizar estudiante:", error)
-      alert("Error al actualizar estudiante")
-    }
+const handleSave = async (data: Estudiante) => {
+  try {
+    await updateEstudiante(data.cod_e, data)
+    showToast("Estudiante actualizado correctamente", "success")
+    fetchEstudiantes()
+    setModalOpen(false)
+  } catch (error) {
+    console.error("Error al actualizar estudiante:", error)
+    showToast("Error al actualizar estudiante", "error")
   }
-
+}
   return (
     <div className="p-6 md:p-8 bg-white rounded-xl shadow-lg">
       <div className="flex items-center gap-3 mb-6">
