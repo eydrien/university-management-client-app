@@ -5,6 +5,7 @@ import {
   Users,
   BookOpen,
   Layers,
+  PencilLine,
   Menu,
   X,
 } from "lucide-react"
@@ -17,6 +18,7 @@ const links = [
   { to: "/asignaturas", label: "Asignaturas", icon: <BookOpen size={20} /> },
   { to: "/profesores", label: "Profesores", icon: <Users size={20} /> },
   { to: "/imparte", label: "Imparte", icon: <Layers size={20} /> },
+  { to: "/inscribe", label: "Inscribe", icon: <PencilLine size={20} /> },
 ]
 
 // Componente Sidebar que muestra un menú lateral con navegación.

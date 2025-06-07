@@ -6,9 +6,9 @@ import SearchBar from "../../components/SearchBar";
 import { getAsignaturas, updateAsignatura, deleteAsignatura } from "../../services/AsignaturasService";
 import type { Asignatura } from "../../types/Asignatura";
 
-import AsignaturaForm from "./AsignaturaForm";
-import AsignaturaTable from "./AsignaturaTable";
-import AsignaturaModal from "./AsignaturaModal";
+import AsignaturaForm from "./AsignaturasForm";
+import AsignaturaTable from "./AsignaturasTable";
+import AsignaturaModal from "./AsignaturasModal";
 
 const AsignaturasPage = () => {
   // Estado para lista, carga, modal y asignatura a editar

@@ -3,7 +3,8 @@ import HomePage from "./pages/HomePage"
 import EstudiantesPage from "./features/estudiantes/EstudiantesPage"
 import MainLayout from "./layouts/MainLayout"
 import PlainLayout from "./layouts/PlainLayout"
-import AsignaturasPage from "./features/asignaturas/AsignaturaPage"
+import AsignaturasPage from "./features/asignaturas/AsignaturasPage"
+import ProfesoresPage from "./features/profesores/ProfesoresPage"
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
       <Route element={<MainLayout />}>
         <Route path="/estudiantes" element={<EstudiantesPage />} />
         <Route path="/asignaturas" element={<AsignaturasPage/>} />
-        {/* <Route path="/profesores" element={<PofesoresPage/>} /> */}
+        <Route path="/profesores"  element={<ProfesoresPage/>} />
       </Route>
     </Routes>
   )
