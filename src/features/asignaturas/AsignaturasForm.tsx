@@ -59,7 +59,7 @@ const AsignaturaForm = ({ onSuccess }: { onSuccess: () => void }) => {
       onSuccess();
     } catch (error) {
       console.error("Error al crear asignatura:", error);
-      setAlert({ type: "error", message: "Error al crear la asignatura 😓" });
+      setAlert({ type: "error", message: "Error al crear la asignatura 😓 LLene todos los campos" });
     }
 
     setTimeout(() => setAlert(null), 4000);

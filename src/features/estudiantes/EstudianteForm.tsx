@@ -48,7 +48,7 @@ const EstudianteForm = ({ onSuccess }: { onSuccess: () => void }) => {
       // Notificar al padre para recargar datos
       onSuccess();
     } catch (error) {
-      setAlert({ type: "error", message: "Error al crear el estudiante 😓" });
+      setAlert({ type: "error", message: "Error al crear el estudiante 😓 Llene todos los campos" });
       console.error("Error en el envío:", error);
     }
 

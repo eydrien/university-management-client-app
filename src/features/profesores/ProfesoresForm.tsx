@@ -71,7 +71,7 @@ const ProfesorForm = ({ onSuccess }: { onSuccess: () => void }) => {
       onSuccess();
     } catch (error) {
       console.error("Error al crear profesor:", error);
-      setAlert({ type: "error", message: "Error al crear el profesor 😓" });
+      setAlert({ type: "error", message: "Error al crear el profesor 😓 LLene todos los campos" });
     }
 
     setTimeout(() => setAlert(null), 4000);
